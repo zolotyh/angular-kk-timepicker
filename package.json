@@ -1,6 +1,6 @@
 {
   "name": "angular-kk-timepicker",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Angular timepicker widget, bootstrap compatible",
   "main": "gulpfile.js",
   "scripts": {
@@ -12,10 +12,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zolotyh/angular-widget-template.git"
+    "url": "git@github.com:zolotyh/angular-kk-timepicker.git"
   },
   "bugs": {
-    "url": "https://github.com/zolotyh/angular-widget-template/issues"
+    "url": "git@github.com:zolotyh/angular-kk-timepicker.git/issues"
   },
   "homepage": "https://github.com/zolotyh/angular-widget-template#readme",
   "author": "Alexey Zolotyh (aazolotyh@gmail.com)",
