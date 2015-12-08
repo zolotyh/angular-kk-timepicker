@@ -8,7 +8,8 @@
   "license": "ISC",
   "keywords": [
     "Angular",
-    "js"
+    "timepicker",
+    "bootstrap"
   ],
   "homepage": "https://github.com/zolotyh/angular-timepicker",
   "moduleType": [
