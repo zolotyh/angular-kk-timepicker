@@ -34,7 +34,7 @@ module.exports = function (gulp, plugins, config) {
       .pipe(plugins.rename(config.name + '.js'))
       .pipe(gulp.dest(config.dist))
       .pipe(plugins.uglify())
-      .pipe(plugins.rename(config.name + 'min.js'))
+      .pipe(plugins.rename(config.name + '.min.js'))
       .pipe(plugins.sourcemaps.write('./'))
       .pipe(gulp.dest(config.dist));
   }
