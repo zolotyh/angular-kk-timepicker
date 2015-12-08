@@ -126,3 +126,4 @@ documentation/js/bootstrap.js
 documentation/js/bootstrap.min.js
 documentation/js/npm.js
 .publish
+/test
