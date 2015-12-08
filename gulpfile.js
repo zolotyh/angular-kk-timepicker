@@ -15,5 +15,5 @@ var config = {
 
 require('gulp-autoload-tasks')(gulp, plugins, config);
 
-gulp.task('default', ['clear', 'typescript', 'templates', 'server']);
+gulp.task('default', ['typescript', 'templates', 'server']);
 
