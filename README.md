@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/zolotyh/angular-kk-timepicker.svg?branch=master)](https://travis-ci.org/zolotyh/angular-kk-timepicker)
+
 # angular-kk-timepicker
 
 angular.module('kk.timepicker')
