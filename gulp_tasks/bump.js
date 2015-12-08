@@ -12,6 +12,8 @@ module.exports = function (gulp, plugins) {
       .pipe(plugins.filter('package.json'))
       // **tag it in the repository**
       .pipe(plugins.tagVersion());
+      // exit
+      .pipe(plugins.exit());
   }
   gulp.task('patch', function() { return inc('patch'); });
   gulp.task('feature', function() { return inc('minor'); });
