@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="timepicker">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="./style.css" media="all">
+  <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="./angular-kk-timpicker.css" media="all">
+</head>
+<body>
+  <div class="container" ng-controller="indexCtrl as ctrl">
+    <h1>
+      Test
+    </h1>
+    <div class="row">
+      <div class="col-sm-2" >
+        <kk-timepicker settings="ctrl.settings" ng-model="ctrl.time"></kk-timepicker>
+      </div>
+      <div class="col-sm-2">
+        {{ ctrl.time }}
+        <div>
+          <input type="text" ng-model="ctrl.time">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="./angular/angular.js"></script>
+<script src="./angular-kk-timpicker.js"></script>
+<script src="./angular-kk-timpicker.tpl.js"></script>
+<script>
+angular.module('timepicker', ['kk.timepicker'])
+.controller('indexCtrl', function($scope){
+  var ctrl = this;
+  ctrl.settings = {
+    default: function(){
+      var date = new Date();
+      date.setHours(1);
+      date.setMinutes(2);
+      return date;
+    }
+  };
+});
+
+</script>
+</body>
+</html>

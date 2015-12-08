@@ -1,0 +1,6 @@
+{
+    "libs": [ "angular", "browser", "underscore", "jquery" ],
+    "plugins": {
+      "angular": "./"
+    }
+}
