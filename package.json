@@ -1,7 +1,7 @@
 {
-  "name": "angular-kk-timpicker",
+  "name": "angular-kk-timepicker",
   "version": "0.0.1",
-  "description": "Angular timpicker widget, bootstrap compatible",
+  "description": "Angular timepicker widget, bootstrap compatible",
   "main": "gulpfile.js",
   "scripts": {
     "test": "node ./node_modules/karma/bin/karma start"

@@ -1,6 +1,6 @@
 {
-  "name": "angular-kk-timpicker",
-  "description": "Angular timpicker widget, bootstrap compatible",
+  "name": "angular-kk-timepicker",
+  "description": "Angular timepicker widget, bootstrap compatible",
   "main": "gulpfile.js",
   "authors": [
     "Alexey Zolotyh (aazolotyh@gmail.com)"
