@@ -11,7 +11,7 @@ module.exports = function (gulp, plugins) {
       // read only one file to get the version number
       .pipe(plugins.filter('package.json'))
       // **tag it in the repository**
-      .pipe(plugins.tagVersion());
+      .pipe(plugins.tagVersion())
       // exit
       .pipe(plugins.exit());
   }
