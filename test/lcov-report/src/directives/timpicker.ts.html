@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/directives/timpicker.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/directives/</a> timpicker.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">49.18% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>60/122</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">22.92% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>11/48</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/25</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">49.58% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>59/119</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">///&lt;reference path="./timepicker.d.ts" /&gt;
+///&lt;reference path="../factories/timepickerFactory.d.ts" /&gt;
+///&lt;reference path="../../typings/tsd.d.ts" /&gt;
+&nbsp;
+import '../factories/timepickerFactory';
+&nbsp;
+class Timepicker implements TimepickerInterface {
+  constructor(factory: TimepickerFactoryInterface) {
+    this.factory = factory;<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="if path not taken" >I</span></span>
+  };
+  factory: TimepickerFactoryInterface;
+  link:ng.IDirectiveLinkFn = (
+    scope:TimepickerScope,
+    element:ng.IAugmentedJQuery,
+    attrs:ng.IAttributes,
+    modelCtrl: ng.INgModelController
+  ) =&gt; {
+    const $input = angular.element(element[0].querySelector('.js-input'))
+      , factory = this.factory;
+&nbsp;
+    let cacheValue = '';
+&nbsp;
+    let settings:any = {
+      addZero: true,
+      default: function(){
+        return new Date();
+      }
+    };<span class="fstat-no" title="function not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+    const keyHandler = () =&gt; {
+      console.log(123);<span class="fstat-no" title="function not covered" ></span>
+    };<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+    element.on('focus', () =&gt; {
+      console.log('focus');<span class="fstat-no" title="function not covered" ></span>
+      angula<span class="cstat-no" title="statement not covered" >r.element(this).on('k</span>eyup', keyHandler);
+    });<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+    element.on('blur', () =&gt; {
+      console.log('blur');
+      angular.element(this).off('keyup', keyHandler);
+    });
+&nbsp;
+    settings = angular.extend(settings, scope.settings);
+&nbsp;
+    scope.$watch('date', (newValue, oldValue) =&gt; {
+      if (ne<span class="missing-if-branch" title="else path not taken" >E</span>wValue === oldValue &amp;&amp; !modelCtrl.$viewValue) {
+        scope.date = settings.default();
+        const value:string = factory.formatString(scope.date, settings);
+        modelCtrl.$setViewValue(value);
+        $input.val(value);
+      }
+&nbsp;
+      if (modelCtrl.$viewValue) {
+        scope.date = factory.parseString(modelCtrl.$viewValue, settings);
+      }
+&nbsp;
+      if (!newValue) {
+        return;
+      }
+<span class="branch-1 cbranch-no" title="branch not covered" ></span>
+      scope.hours = factory.getHours(scope.date, settings);
+      scope.minutes = factory.getMinutes(scope.date, settings);
+      scope.flag = factory.getFlag(scope.date, settings);
+    }, true);
+&nbsp;
+<span class="fstat-no" title="function not covered" ></span>
+    modelCtr<span class="cstat-no" title="statement not covered" >l.$formatters.push((value:string) =&gt; {</span>
+      return<span class="cstat-no" title="statement not covered" > factory.convert(va</span>lue, settings) || value;
+    });<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+    modelCtrl.$parsers.push(<span class="fstat-no" title="function not covered" >(value:string</span>) =&gt; {
+      return<span class="cstat-no" title="statement not covered" > factory.convert(value, settings) || value;</span>
+    });<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+    const error = 'timeStringParse';
+&nbsp;
+    modelCtrl.$validators[e<span class="fstat-no" title="function not covered" >rror] = (mode</span>lValue: any) =&gt;
+      !!fact<span class="cstat-no" title="statement not covered" >ory.convert(modelValue, set</span>tings);
+<span class="cstat-no" title="statement not covered" ></span>
+    const ch<span class="cstat-no" title="statement not covered" >angeModel = () =</span>&gt; {
+      const value = factory.formatString(scope.date, settings);
+      $input.val(value);<span class="fstat-no" title="function not covered" ></span>
+      modelC<span class="cstat-no" title="statement not covered" >trl.$setViewValue(value);</span>
+    };<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+    $input.on('change', () =&gt; {
+      const value:string = <span class="fstat-no" title="function not covered" >factory.conve</span>rt($input.val(), settings);
+      scope.<span class="cstat-no" title="statement not covered" >date = factory.pa</span>rseString(value, settings);
+      if (scope.date) {
+        changeModel();
+      }
+    });
+&nbsp;
+    $input.on('focus', () =&gt; {<span class="fstat-no" title="function not covered" ></span>
+      cacheV<span class="cstat-no" title="statement not covered" >alue = $input.val();</span>
+      scope.closePopover();
+      $input.val('');<span class="fstat-no" title="function not covered" ></span>
+    });<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+    $input.on('blur', () =&gt; {
+      if (!$<span class="cstat-no" title="statement not covered" >input.val() &amp;&amp; cacheValue) {</span>
+        $inp<span class="cstat-no" title="statement not covered" >ut.val(cacheValue);</span>
+      }<span class="cstat-no" title="statement not covered" ></span>
+    });
+<span class="fstat-no" title="function not covered" ></span>
+    $input.o<span class="cstat-no" title="statement not covered" >n('keyup', () =&gt; {</span>
+      cacheValue<span class="cstat-no" title="statement not covered" > = '';</span>
+    });
+<span class="cstat-no" title="statement not covered" ></span>
+    modelCtr<span class="cstat-no" title="statement not covered" >l.$render = () =&gt; {</span>
+      scope.date<span class="cstat-no" title="statement not covered" > = factory.parseString(mo</span>delCtrl.$viewValue, settings);
+      $input.val<span class="cstat-no" title="statement not covered" >(modelCtrl.$vie</span>wValue);
+    };<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+    scope.togglePopover = () =&gt; {
+      scope.popo<span class="cstat-no" title="statement not covered" >verIsOpen = !scope.p</span>opoverIsOpen;
+    };
+&nbsp;
+    scope.addMinutes = (v<span class="fstat-no" title="function not covered" >alue:number) =&gt; {</span>
+      if (!s<span class="cstat-no" title="statement not covered" >cope.date) { scope.date = settings.default(); }</span>
+      const curr<span class="cstat-no" title="statement not covered" >ent = scope.date.getMinutes();</span>
+      scope.date.setMinutes(current + value);
+      change<span class="cstat-no" title="statement not covered" >Model();</span>
+    };<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+    scope.ch<span class="cstat-no" title="statement not covered" >angeFlag = () =</span>&gt; {
+      if (!scope.date) { scope.date = settings.default(); }
+      const current = scope.date.getHo<span class="fstat-no" title="function not covered" >urs();</span>
+      if (cu<span class="cstat-no" title="statement not covered" >rrent === 0) {</span>
+        scope.da<span class="cstat-no" title="statement not covered" >te.setHours(12);</span>
+        changeModel();
+      } else<span class="cstat-no" title="statement not covered" > if (current === 12) {</span>
+        scope.da<span class="cstat-no" title="statement not covered" >te.setHours(0);</span>
+        changeModel(<span class="cstat-no" title="statement not covered" >);</span>
+      } else {<span class="cstat-no" title="statement not covered" ></span>
+        scope.addHours(12);
+      }<span class="cstat-no" title="statement not covered" ></span>
+    };<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+    scope.addHours = (value:number) =&gt; {
+      if (!scope.date) { scope.date = settings.default(); }
+      const curr<span class="cstat-no" title="statement not covered" >ent = scope.date.getHours();</span>
+      scope.date<span class="cstat-no" title="statement not covered" >.setHours(current + value);</span>
+      scope.hours = <span class="cstat-no" title="statement not covered" >factory.getH</span>ours(scope.date, settings);
+      changeModel();<span class="cstat-no" title="statement not covered" ></span>
+    };
+<span class="cstat-no" title="statement not covered" ></span>
+    scope.changeTime<span class="cstat-no" title="statement not covered" >FromPopover = (value:string, type:st</span>ring) =&gt; {
+      if (!scope.date) { scope.date = settings.default(); }
+<span class="cstat-no" title="statement not covered" ></span>
+      if (type === '<span class="cstat-no" title="statement not covered" >flag') {</span>
+        if (value.toUpperCase() === 'AM' &amp;&amp; scope.date.getHours() &gt; 12) {
+          scope.<span class="cstat-no" title="statement not covered" >addHours(12);</span>
+          return;
+        }
+        if (value.toUpperCase<span class="fstat-no" title="function not covered" >() === 'PM' &amp;</span>&amp; scope.date.getHours() &lt;= 12) {
+          sc<span class="cstat-no" title="statement not covered" >ope.addHours(12);<span class="cstat-no" title="statement not covered" ></span></span>
+          return;
+        }
+<span class="fstat-no" title="function not covered" ></span>
+      } else<span class="cstat-no" title="statement not covered" > {</span>
+        const parsedValue = parseInt(value, 10);
+&nbsp;
+        if (factory.isNaN(parsedValue)) {
+          value = '';
+          return;
+        }
+&nbsp;
+        if (type === 'minute') {
+          scope.date.setMinutes(parsedValue);
+        }
+&nbsp;
+        if (type === 'hour') {
+          scope.date.setHours(parsedValue);
+        }
+&nbsp;
+        changeModel();
+      }
+    };
+&nbsp;
+    scope.closePopover = () =&gt; { scope.popoverIsOpen = false; scope.$digest(); };
+&nbsp;
+    angular.element(document).on('click', scope.closePopover);
+&nbsp;
+    scope.$on('$destroy', () =&gt; { angular.element(document).off('click', scope.closePopover); });
+&nbsp;
+&nbsp;
+  };
+  scope: any = {
+    settings: '='
+  };
+  replace:boolean = true;
+  require:string = 'ngModel';
+  templateUrl:string = 'directives/kk.timepicker.tpl.html';
+}
+&nbsp;
+angular.module('kk.timepicker').directive('kkTimepicker',
+[ 'kkTimepickerFactory', (kkTimepickerFactory:TimepickerFactoryInterface) =&gt; new Timepicker(kkTimepickerFactory)]);
+&nbsp;
+export default Timepicker;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Dec 08 2015 08:31:05 GMT+0300 (MSK)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
