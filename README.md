@@ -9,12 +9,9 @@ angular.module('kk.timepicker')
 ```
 angular.module('timepickerTest', ['kk.timepicker'])
 .controller('indexCtrl', function($scope){
-  var ctrl = this;
-  ctrl.settings = {
+  $scope.settings = {
     default: function(){
       var date = new Date();
-      date.setHours(1);
-      date.setMinutes(2);
       return date;
     }
   };
