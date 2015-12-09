@@ -30,10 +30,11 @@
       <hr />
       <div class="row">
         <div class="col-sm-2" >
-          <kk-timepicker settings="ctrl.settings" ng-disabled="ctrl.disabled" ng-model="ctrl.time"></kk-timepicker>
+          <kk-timepicker settings="ctrl.settings1" ng-disabled="ctrl.disabled"
+            ng-model="ctrl.time1"></kk-timepicker>
         </div>
         <div class="col-sm-2">
-          {{ ctrl.time }}
+          {{ ctrl.time1 }}
           <div>
             <input type="checkbox" ng-model="ctrl.disabled">
           </div>
@@ -74,6 +75,8 @@
             return date;
           }
         };
+        ctrl.settings1 = {
+        }
       });
     </script>
   </body>
