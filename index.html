@@ -16,7 +16,7 @@
       <div class="panel">
         <div class="row">
           <div class="col-sm-2" >
-            <kk-timepicker settings="ctrl.settings" ng-model="ctrl.time"></kk-timepicker>
+            <kk-timepicker settings="ctrl.settings" ng-disabled="false" ng-model="ctrl.time"></kk-timepicker>
           </div>
           <div class="col-sm-2">
             {{ ctrl.time }}
@@ -46,22 +46,22 @@
     </div>
 
     <script src="./angular.js"></script>
+    <script src="./jquery/dist/jquery.min.js"></script>
     <script src="./angular-kk-timepicker.min.js"></script>
     <script src="./angular-kk-timepicker.tpl.js"></script>
     <script>
-angular.module('timepicker', ['kk.timepicker'])
-.controller('indexCtrl', function($scope){
-  var ctrl = this;
-  ctrl.settings = {
-    default: function(){
-      var date = new Date();
-      date.setHours(1);
-      date.setMinutes(2);
-      return date;
-    }
-  };
-});
-
+      angular.module('timepicker', ['kk.timepicker'])
+      .controller('indexCtrl', function($scope){
+        var ctrl = this;
+        ctrl.settings = {
+          default: function(){
+            var date = new Date();
+            date.setHours(1);
+            date.setMinutes(2);
+            return date;
+          }
+        };
+      });
     </script>
   </body>
 </html>
