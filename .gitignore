@@ -96,6 +96,8 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
+.publish
+/test/
 
 documentation/angular-csp.css
 documentation/angular-kk-timepicker.css
@@ -125,5 +127,6 @@ documentation/fonts/glyphicons-halflings-regular.woff2
 documentation/js/bootstrap.js
 documentation/js/bootstrap.min.js
 documentation/js/npm.js
-.publish
-/test/
+documentation/jquery.js
+documentation/jquery.min.js
+documentation/jquery.min.map
