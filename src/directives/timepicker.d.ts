@@ -4,6 +4,7 @@ interface TimepickerScope extends ng.IScope {
   // use scope only from controller
   default: any;
   date: Date;
+  touch: boolean;
   value: string;
   popoverIsOpen: boolean;
   hours:string;

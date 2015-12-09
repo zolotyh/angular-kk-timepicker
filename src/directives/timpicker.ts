@@ -16,10 +16,12 @@ class Timepicker implements TimepickerInterface {
     modelCtrl: ng.INgModelController
   ) => {
     const $input:JQuery = angular.element(element[0].querySelector('.js-input'))
+      , $nativeInput:JQuery = angular.element(element[0].querySelector('.js-native-input'))
       , UP = 38
       , DOWN = 40
       , factory = this.factory;
 
+    scope.touch = 'ontouchstart' in window;
 
     let settings:any = {
       addZero: true,
@@ -147,13 +149,31 @@ class Timepicker implements TimepickerInterface {
     });
 
     modelCtrl.$render = () => {
-      scope.date = factory.parseString(modelCtrl.$viewValue, settings);
-      $input.val(modelCtrl.$viewValue);
+      console.log(modelCtrl);
+        setTimeout(() => {
+          const value = modelCtrl.$viewValue;
+          scope.date = factory.parseString(value, settings);
+
+          if (scope.touch) {
+            $nativeInput.val(factory.convert(value, {use24HoursFormat: true, addZero: true}));
+          } else {
+            $input.val(value);
+          }
+        });
+
     };
+
+    $nativeInput.on('change', (event: Event) => {
+      if (scope.touch) {
+        modelCtrl.$setViewValue($nativeInput.val());
+      }
+    });
 
 
     scope.togglePopover = () => {
-      scope.popoverIsOpen = !scope.popoverIsOpen;
+      if (!scope.touch) {
+        scope.popoverIsOpen = !scope.popoverIsOpen;
+      }
     };
 
     scope.addMinutes = (value:number) => {

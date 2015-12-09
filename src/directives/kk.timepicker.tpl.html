@@ -1,12 +1,20 @@
-<div class="kk-timepicker">
-  <div class="kk-timepicker__input-group input-group">
+<div class="kk-timepicker" >
+  <div class="kk-timepicker__input-group
+  input-group"ng-class="{'kk-timepicker__input-group_touch': touch}">
     <div class="input-group bootstrap-timepicker input-group"></div>
-     <input type="text" class="kk-timepicker__input form-control js-input"
-     ng-disabled="ngDisabled" >
-    <span class="input-group-addon kk-timepicker__input-label"
+
+     <input type="text"
+            class="kk-timepicker__input form-control js-input"
+            ng-disabled="ngDisabled" >
+
+            <input id="input{{$id}}" type="time"
+            class="kk-timepicker__input kk-timepicker__input_native form-control js-native-input"
+            ng-disabled="ngDisabled">
+
+            <label for="#input{{$id}}" class="input-group-addon kk-timepicker__input-label"
       ng-click="togglePopover();$event.stopPropagation()">
       <i class="glyphicon glyphicon-time"></i>
-    </span>
+    </label>
   </div>
   <div class="kk-timepicker-popover" ng-if="popoverIsOpen"
     ng-click="$event.stopPropagation()">
