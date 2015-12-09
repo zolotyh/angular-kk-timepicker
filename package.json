@@ -4,7 +4,8 @@
   "description": "Angular timepicker widget, bootstrap compatible",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "node ./node_modules/karma/bin/karma start"
+    "test": "node ./node_modules/karma/bin/karma start && npm run deploy",
+    "deploy": "./node node_modules/gulp/bin/gulp.js deploy"
   },
   "keywords": [
     "Angular",
