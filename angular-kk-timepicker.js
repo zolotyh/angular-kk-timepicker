@@ -26,9 +26,11 @@ var Timepicker = function Timepicker(factory) {
 
     this.link = function (scope, element, attrs, modelCtrl) {
         var $input = angular.element(element[0].querySelector('.js-input')),
+            $nativeInput = angular.element(element[0].querySelector('.js-native-input')),
             UP = 38,
             DOWN = 40,
             factory = _this.factory;
+        scope.touch = 'ontouchstart' in window;
         var settings = {
             addZero: true,
             default: function _default() {
@@ -133,11 +135,26 @@ var Timepicker = function Timepicker(factory) {
             }
         });
         modelCtrl.$render = function () {
-            scope.date = factory.parseString(modelCtrl.$viewValue, settings);
-            $input.val(modelCtrl.$viewValue);
+            console.log(modelCtrl);
+            setTimeout(function () {
+                var value = modelCtrl.$viewValue;
+                scope.date = factory.parseString(value, settings);
+                if (scope.touch) {
+                    $nativeInput.val(factory.convert(value, { use24HoursFormat: true, addZero: true }));
+                } else {
+                    $input.val(value);
+                }
+            });
         };
+        $nativeInput.on('change', function (event) {
+            if (scope.touch) {
+                modelCtrl.$setViewValue($nativeInput.val());
+            }
+        });
         scope.togglePopover = function () {
-            scope.popoverIsOpen = !scope.popoverIsOpen;
+            if (!scope.touch) {
+                scope.popoverIsOpen = !scope.popoverIsOpen;
+            }
         };
         scope.addMinutes = function (value) {
             if (!scope.date) {
