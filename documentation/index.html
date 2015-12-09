@@ -16,17 +16,26 @@
           alpha not for production
         </small>
       </h1>
-
-      <div class="panel">
-        <div class="row">
-          <div class="col-sm-2" >
-            <kk-timepicker settings="ctrl.settings" ng-disabled="false" ng-model="ctrl.time"></kk-timepicker>
+      <div class="row">
+        <div class="col-sm-2" >
+          <kk-timepicker settings="ctrl.settings" ng-disabled="false" ng-model="ctrl.time"></kk-timepicker>
+        </div>
+        <div class="col-sm-2">
+          {{ ctrl.time }}
+          <div>
+            <input type="text" ng-model="ctrl.time">
           </div>
-          <div class="col-sm-2">
-            {{ ctrl.time }}
-            <div>
-              <input type="text" ng-model="ctrl.time">
-            </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-2" >
+          <kk-timepicker settings="ctrl.settings" ng-disabled="true" ng-model="ctrl.time"></kk-timepicker>
+        </div>
+        <div class="col-sm-2">
+          {{ ctrl.time }}
+          <div>
+            <input type="text" ng-model="ctrl.time">
           </div>
         </div>
       </div>

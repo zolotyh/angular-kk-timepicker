@@ -152,7 +152,7 @@ var Timepicker = function Timepicker(factory) {
             }
         });
         scope.togglePopover = function () {
-            if (!scope.touch) {
+            if (!scope.touch && !scope.ngDisabled) {
                 scope.popoverIsOpen = !scope.popoverIsOpen;
             }
         };

@@ -171,7 +171,7 @@ class Timepicker implements TimepickerInterface {
 
 
     scope.togglePopover = () => {
-      if (!scope.touch) {
+      if (!scope.touch && !scope.ngDisabled) {
         scope.popoverIsOpen = !scope.popoverIsOpen;
       }
     };
