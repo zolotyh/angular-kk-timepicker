@@ -10,6 +10,7 @@ interface TimepickerScope extends ng.IScope {
   minutes:string;
   flag:string;
   settings:any;
+  ngDisabled:boolean;
   togglePopover():void;
   closePopover():void;
   addHours(value:number):void;

@@ -2,7 +2,7 @@ module.exports = function (gulp, plugins, config) {
   gulp.task('server', ['stylus'] ,function(){
     config.browserSync.init({
       server: {
-        baseDir: ['./documentation', './dist', './node_modules']
+        baseDir: ['./dist', './node_modules', './documentation']
       }
     });
     // add watchers for reloading

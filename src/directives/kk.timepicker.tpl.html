@@ -1,7 +1,8 @@
 <div class="kk-timepicker">
   <div class="kk-timepicker__input-group input-group">
     <div class="input-group bootstrap-timepicker input-group"></div>
-     <input type="text" class="kk-timepicker__input form-control js-input">
+     <input type="text" class="kk-timepicker__input form-control js-input"
+     ng-disabled="ngDisabled" >
     <span class="input-group-addon kk-timepicker__input-label"
       ng-click="togglePopover();$event.stopPropagation()">
       <i class="glyphicon glyphicon-time"></i>

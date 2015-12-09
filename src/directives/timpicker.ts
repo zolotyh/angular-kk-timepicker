@@ -15,10 +15,11 @@ class Timepicker implements TimepickerInterface {
     attrs:ng.IAttributes,
     modelCtrl: ng.INgModelController
   ) => {
-    const $input = angular.element(element[0].querySelector('.js-input'))
+    const $input:JQuery = angular.element(element[0].querySelector('.js-input'))
+      , UP = 38
+      , DOWN = 40
       , factory = this.factory;
 
-    let cacheValue = '';
 
     let settings:any = {
       addZero: true,
@@ -26,20 +27,6 @@ class Timepicker implements TimepickerInterface {
         return new Date();
       }
     };
-
-    const keyHandler = () => {
-      console.log(123);
-    };
-
-    element.on('focus', () => {
-      console.log('focus');
-      angular.element(this).on('keyup', keyHandler);
-    });
-
-    element.on('blur', () => {
-      console.log('blur');
-      angular.element(this).off('keyup', keyHandler);
-    });
 
     settings = angular.extend(settings, scope.settings);
 
@@ -85,28 +72,78 @@ class Timepicker implements TimepickerInterface {
       modelCtrl.$setViewValue(value);
     };
 
+    const calcSelection = (cursorStart:number, value:string) => {
+      let start:number;
+      let end:number;
+
+      if (cursorStart <= 2) {
+        start = 0;
+        end = 2;
+      } else if (cursorStart > 2 && cursorStart < 6) {
+        start = 3;
+        end = 5;
+      } else {
+        start = 6;
+        end = value.length;
+      }
+
+      return {
+        start: start,
+        end: end
+      };
+    };
+
+    $input.on('focusin', (e:JQueryEventObject) => {
+      const input:any = $input[0];
+      const value = $input.val();
+
+
+      const valueIsValid = factory.checkValidity(value);
+
+      if (!valueIsValid) {return; }
+
+      setTimeout(() => {
+        const cursorStart = input.selectionStart;
+        const selection = calcSelection(cursorStart, value);
+        input.setSelectionRange(selection.start, selection.end);
+      });
+
+
+    });
+
+    $input.on('keydown', (keyDownEvent: JQueryEventObject) => {
+      const switchPosition = (value:number) => {
+        const inputValue = $input.val();
+        const input:any = $input[0];
+        const cursorStart = input.selectionStart;
+        if (cursorStart <= 2) {
+          scope.addHours(value);
+        } else if (cursorStart > 2 && cursorStart < 6) {
+          scope.addMinutes(value);
+        } else {
+          scope.changeFlag(value);
+        }
+        const selection = calcSelection(cursorStart, inputValue);
+        input.setSelectionRange(selection.start, selection.end);
+      };
+
+      if (keyDownEvent.which === DOWN) {
+        switchPosition(-1);
+        keyDownEvent.preventDefault();
+      } else if (keyDownEvent.which === UP) {
+        switchPosition(1);
+        keyDownEvent.preventDefault();
+      }
+    });
+
+    $input.on('blur', () => { $input.off('kydown.kktimepicker'); });
+
     $input.on('change', () => {
       const value:string = factory.convert($input.val(), settings);
       scope.date = factory.parseString(value, settings);
       if (scope.date) {
         changeModel();
       }
-    });
-
-    $input.on('focus', () => {
-      cacheValue = $input.val();
-      scope.closePopover();
-      $input.val('');
-    });
-
-    $input.on('blur', () => {
-      if (!$input.val() && cacheValue) {
-        $input.val(cacheValue);
-      }
-    });
-
-    $input.on('keyup', () => {
-      cacheValue = '';
     });
 
     modelCtrl.$render = () => {
@@ -186,12 +223,12 @@ class Timepicker implements TimepickerInterface {
     angular.element(document).on('click', scope.closePopover);
 
     scope.$on('$destroy', () => { angular.element(document).off('click', scope.closePopover); });
-
-
   };
   scope: any = {
-    settings: '='
+    settings: '=',
+    ngDisabled: '='
   };
+  priority:number = 101;
   replace:boolean = true;
   require:string = 'ngModel';
   templateUrl:string = 'directives/kk.timepicker.tpl.html';

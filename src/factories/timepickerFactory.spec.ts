@@ -228,4 +228,16 @@ describe('factory: kkTimepickerFactory', function() {
       expect(kkTimepickerFactory.formatString(date, {addZero: true, use24HoursFormat: true})).toBe('01:35');
     }));
   });
+
+  describe('method checkValidity', () => {
+    it('should return valid if input = 00   : 59 AM', inject(function(kkTimepickerFactory: any) {
+      const date = '00   : 59 AM';
+      expect(kkTimepickerFactory.checkValidity(date)).toBe(true);
+    }));
+    it('should return valid if input = 00   : 59 AMd', inject(function(kkTimepickerFactory: any) {
+      const date = '00   : 59 AMd';
+      expect(kkTimepickerFactory.checkValidity(date)).toBe(false);
+    }));
+  });
+
 });

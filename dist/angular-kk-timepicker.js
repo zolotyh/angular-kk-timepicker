@@ -26,25 +26,15 @@ var Timepicker = function Timepicker(factory) {
 
     this.link = function (scope, element, attrs, modelCtrl) {
         var $input = angular.element(element[0].querySelector('.js-input')),
+            UP = 38,
+            DOWN = 40,
             factory = _this.factory;
-        var cacheValue = '';
         var settings = {
             addZero: true,
             default: function _default() {
                 return new Date();
             }
         };
-        var keyHandler = function keyHandler() {
-            console.log(123);
-        };
-        element.on('focus', function () {
-            console.log('focus');
-            angular.element(_this).on('keyup', keyHandler);
-        });
-        element.on('blur', function () {
-            console.log('blur');
-            angular.element(_this).off('keyup', keyHandler);
-        });
         settings = angular.extend(settings, scope.settings);
         scope.$watch('date', function (newValue, oldValue) {
             if (newValue === oldValue && !modelCtrl.$viewValue) {
@@ -78,25 +68,69 @@ var Timepicker = function Timepicker(factory) {
             $input.val(value);
             modelCtrl.$setViewValue(value);
         };
+        var calcSelection = function calcSelection(cursorStart, value) {
+            var start = undefined;
+            var end = undefined;
+            if (cursorStart <= 2) {
+                start = 0;
+                end = 2;
+            } else if (cursorStart > 2 && cursorStart < 6) {
+                start = 3;
+                end = 5;
+            } else {
+                start = 6;
+                end = value.length;
+            }
+            return {
+                start: start,
+                end: end
+            };
+        };
+        $input.on('focusin', function (e) {
+            var input = $input[0];
+            var value = $input.val();
+            var valueIsValid = factory.checkValidity(value);
+            if (!valueIsValid) {
+                return;
+            }
+            setTimeout(function () {
+                var cursorStart = input.selectionStart;
+                var selection = calcSelection(cursorStart, value);
+                input.setSelectionRange(selection.start, selection.end);
+            });
+        });
+        $input.on('keydown', function (keyDownEvent) {
+            var switchPosition = function switchPosition(value) {
+                var inputValue = $input.val();
+                var input = $input[0];
+                var cursorStart = input.selectionStart;
+                if (cursorStart <= 2) {
+                    scope.addHours(value);
+                } else if (cursorStart > 2 && cursorStart < 6) {
+                    scope.addMinutes(value);
+                } else {
+                    scope.changeFlag(value);
+                }
+                var selection = calcSelection(cursorStart, inputValue);
+                input.setSelectionRange(selection.start, selection.end);
+            };
+            if (keyDownEvent.which === DOWN) {
+                switchPosition(-1);
+                keyDownEvent.preventDefault();
+            } else if (keyDownEvent.which === UP) {
+                switchPosition(1);
+                keyDownEvent.preventDefault();
+            }
+        });
+        $input.on('blur', function () {
+            $input.off('kydown.kktimepicker');
+        });
         $input.on('change', function () {
             var value = factory.convert($input.val(), settings);
             scope.date = factory.parseString(value, settings);
             if (scope.date) {
                 changeModel();
             }
-        });
-        $input.on('focus', function () {
-            cacheValue = $input.val();
-            scope.closePopover();
-            $input.val('');
-        });
-        $input.on('blur', function () {
-            if (!$input.val() && cacheValue) {
-                $input.val(cacheValue);
-            }
-        });
-        $input.on('keyup', function () {
-            cacheValue = '';
         });
         modelCtrl.$render = function () {
             scope.date = factory.parseString(modelCtrl.$viewValue, settings);
@@ -174,8 +208,10 @@ var Timepicker = function Timepicker(factory) {
         });
     };
     this.scope = {
-        settings: '='
+        settings: '=',
+        ngDisabled: '='
     };
+    this.priority = 101;
     this.replace = true;
     this.require = 'ngModel';
     this.templateUrl = 'directives/kk.timepicker.tpl.html';
@@ -208,6 +244,11 @@ var TimepickerFactory = (function () {
     }
 
     _createClass(TimepickerFactory, [{
+        key: 'checkValidity',
+        value: function checkValidity(value) {
+            return !!value.split(' ').join('').match(this.timeRegExp);
+        }
+    }, {
         key: 'formatDigit',
         value: function formatDigit(digit, addZero) {
             return addZero ? this.pad(digit) : '' + digit;

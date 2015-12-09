@@ -4,6 +4,10 @@
 class TimepickerFactory implements TimepickerFactoryInterface {
   private timeRegExp: RegExp = new RegExp('^([0-2]?[0-9]|2[0-3]|3[0-3])\s{0,}?[:]?\s{0,}([0-5][0-9]|[0-9])?\s{0,}?(am|pm|AM|PM)?$');
 
+  checkValidity(value:string) {
+    return !!value.split(' ').join('').match(this.timeRegExp);
+  }
+
   formatDigit (digit: number, addZero: boolean) {
     return addZero ? this.pad(digit) : '' + digit;
   };
@@ -99,8 +103,6 @@ class TimepickerFactory implements TimepickerFactoryInterface {
     const minutes = parseResults[2] || '';
     const flag = parseResults[3] || '';
     const date = new Date(0);
-
-
 
     let hoursValue = parseInt(hours, 10);
     let minutesValue = parseInt(minutes, 10);

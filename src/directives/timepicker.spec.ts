@@ -23,8 +23,5 @@ describe('directive: kk-timepicker', function() {
     expect(element.hasClass('kk-timepicker')).toBe(true);
   });
 
-  it('should set text', function() {
-    expect(true).toBe(true);
-  });
 
 });
