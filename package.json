@@ -1,6 +1,6 @@
 {
   "name": "angular-kk-timepicker",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Angular timepicker widget, bootstrap compatible",
   "main": "gulpfile.js",
   "scripts": {
