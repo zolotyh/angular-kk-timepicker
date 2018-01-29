@@ -19,6 +19,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 ///<reference path="../factories/timepickerFactory.d.ts" />
 ///<reference path="../../typings/tsd.d.ts" />
 
+
 var Timepicker = function Timepicker(factory) {
     var _this = this;
 
@@ -71,8 +72,8 @@ var Timepicker = function Timepicker(factory) {
             modelCtrl.$setViewValue(value);
         };
         var calcSelection = function calcSelection(cursorStart, value) {
-            var start = undefined;
-            var end = undefined;
+            var start = void 0;
+            var end = void 0;
             if (cursorStart <= 2) {
                 start = 0;
                 end = 2;
@@ -242,18 +243,17 @@ exports.default = Timepicker;
 },{"../factories/timepickerFactory":3}],3:[function(require,module,exports){
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 ///<reference path="../../typings/tsd.d.ts" />
 ///<reference path="./timepickerFactory.d.ts" />
-
-var TimepickerFactory = (function () {
+var TimepickerFactory = function () {
     function TimepickerFactory() {
         _classCallCheck(this, TimepickerFactory);
 
@@ -319,8 +319,8 @@ var TimepickerFactory = (function () {
     }, {
         key: 'formatString',
         value: function formatString(date, settings) {
-            var flag = undefined;
-            var hours = undefined;
+            var flag = void 0;
+            var hours = void 0;
             var value = date.getHours();
             if (!settings.use24HoursFormat) {
                 if (value === 12 || value === 0) {
@@ -390,7 +390,7 @@ var TimepickerFactory = (function () {
     }]);
 
     return TimepickerFactory;
-})();
+}();
 
 angular.module('kk.timepicker').factory('kkTimepickerFactory', function () {
     return new TimepickerFactory();
